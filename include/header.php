@@ -29,7 +29,7 @@
 
            if(!$_SESSION){
 
-        echo "<li><a href='#'>About Electicy</a></li> <li><a href='#'>Contact</a></li></ul>";
+            echo "<li><a href='#'>About Electicy</a></li> <li><a href='#'>Contact</a></li></ul>";
 
             echo "<ul class='nav navbar-nav navbar-right'>" ;
             echo "  <li><a href='#'><span ></span>I am Guest</a></li>";

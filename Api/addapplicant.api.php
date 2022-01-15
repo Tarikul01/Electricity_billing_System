@@ -10,13 +10,24 @@ $db=new Database();
 $conn=$db->connect();
  // $users = new Users($db);
 
-if(isset($_POST['submit'])){
-	$name=$_POST['name'];
-  $phone=$_POST['phone'];
-    $address=$_POST['address'];
-    $email=$_POST['email'];
-	$pass=$_POST['password'];
-  $type=$_POST['types'];
+if(isset($_GET['appid'])){
+  $uid=$_GET['appid'];
+  $sql1="SELECT * FROM application WHERE id=:uid";
+  $stmt=$conn->prepare($sql1);
+  $stmt->bindParam(":uid",$uid);
+  if($stmt->execute()){
+    $result=$stmt->fetch(PDO::FETCH_ASSOC);
+    // var_dump($result);
+    $name=$result['name'];
+    $phone=$result['phone'];
+    $address=$result['address'];
+    $email=$result['email'];
+    $pass=$result['password'];
+    $type="consumer";
+  }
+
+
+
   if(empty($email)||empty($pass)||empty($type) || empty($name)||empty($phone)||empty($address)){
     header("Location: loginform.php?error=emptyinputfield");
 
@@ -27,6 +38,12 @@ if(isset($_POST['submit'])){
     $email=$fm->validation($email);
     $pass=$fm->validation($pass);
     $type=$fm->validation($type);
+    // echo $name;
+    // echo $phone;
+    // echo $address;
+    // echo $email;
+    // echo $pass;
+    // echo $type;
 
 
     $query = "INSERT INTO users(name,address,phone,email, password, types) VALUES (:name,:address,:phone,:email,:pass,:types)";
@@ -51,11 +68,11 @@ if(isset($_POST['submit'])){
         $stmt->bindParam(':uid',$userid);
         $stmt->bindParam(':mname',$metername);
         $stmt->execute();
-        header("Location: ../addusers.php?success=addUserSuccessfully");
+        header("Location: ../application.php?success=addUserSuccessfully");
       };
     }else{
      if($stmt->execute()){
-      header("Location: ../addusers.php?success=addUserSuccessfully");
+      header("Location: ../application.php?success=addUserSuccessfully");
     };
 
   }
@@ -65,7 +82,7 @@ if(isset($_POST['submit'])){
 
 }
 }else{
-	header("Location: login.php?error=plzlogin");
+	header("Location: ../application.php?error=somethingwrong");
 
 
 }

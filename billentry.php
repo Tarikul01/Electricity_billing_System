@@ -50,11 +50,42 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 		</div>			
 		<div class="form-group row">
 			<label class="col-form-label col-4">MeterID</label>
-			<div class="col-8">
+<!-- 			<div class="col-8">
 				<input type="text" class="form-control" name="meterid" required="required">
-			</div> 
-			
-		</select>
+			</div>  -->
+			<div class="col-8">
+				<select class="form-select" aria-label="Default select example" name="meterid">
+			  <option selected>Select MeterID</option>
+				<?php
+				$sqll="SELECT * from meters";
+				$stmt2=$conn->prepare($sqll);
+				if($stmt2->execute()){
+							while($res = $stmt2->fetch(PDO::FETCH_ASSOC)){
+								// var_dump($result);
+								?>
+						  <option value="<?php echo $res['id']; ?>"><?php echo $res['meter_name']; ?></option>
+
+
+								<?php
+
+
+
+
+							}
+
+
+				}
+				
+
+				 ?>
+
+
+
+		
+
+			</select>
+			</div>
+
 	</div>        	
 	<div class="form-group row">
 		<label class="col-form-label col-4">Total Unit</label>

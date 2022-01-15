@@ -26,8 +26,20 @@
 
         <form method="post" action="Api/adduser.api.php">
   <div class="form-group">
+    <label for="formGroupExampleInput">Username</label>
+    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Username" name="name" required>
+  </div>
+  <div class="form-group">
+    <label for="formGroupExampleInput">Phone</label>
+    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Phone" name="phone" required>
+  </div>
+  <div class="form-group">
+    <label for="formGroupExampleInput">Address</label>
+    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Address" name="address" required>
+  </div>
+  <div class="form-group">
     <label for="formGroupExampleInput">E-mail</label>
-    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Email" name="email">
+    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="E-mail" name="email">
   </div>
   <div class="form-group">
     <label for="formGroupExampleInput2">Password</label>

@@ -33,6 +33,10 @@
 						</div>
 	               </nav>
 	               <h1>Wellcome  home page  </h1>
+	               <?php 
+	               include 'include/userlist.inc.php';
+
+	               ?>
 
 				<?php
 			}else if($_SESSION['users']['types']=='admin'){

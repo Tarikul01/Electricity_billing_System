@@ -15,6 +15,12 @@
         <label for="username">Phone</label>
         <input type="text" placeholder="Phone " id="username" name='phone'>
 
+        <label for="username">E-mail</label>
+        <input type="text" placeholder="E-mail " id="username" name='email'>
+
+        <label for="username">Password</label>
+        <input type="text" placeholder="Password " id="username" name='password'>
+
         <label for="password">Address</label>
         <input type="text" placeholder="Address" id="username" name="address">
 

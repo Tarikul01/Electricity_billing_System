@@ -13,10 +13,12 @@ if(isset($_POST['submit'])){
 
 
 	$name=$_POST['name'];
-	$address=$_POST['address'];
+	$phone=$_POST['phone'];
+  $email=$_POST['email'];
+  $password=$_POST['password'];
+  $address=$_POST['address'];
   $message=$_POST['message'];
-  $phone=$_POST['phone'];
-  if(empty($name)||empty($phone) ||empty($address)||empty($message)){
+  if(empty($name)||empty($phone) ||empty($address)||empty($message)||empty($email)||empty($password)){
     header("Location:../Applicationform.php?error=emptyinputfield");
   }
   else{
@@ -24,13 +26,17 @@ if(isset($_POST['submit'])){
     $address=$fm->validation($address);
     $phone=$fm->validation($phone);
     $message=$fm->validation($message);
-    $query = "INSERT INTO application(name,phone,address,message) VALUES (:name,:phone,:address,:message)";
+    $email=$fm->validation($email);
+    $password=$fm->validation($password);
+    $query = "INSERT INTO application(name,phone,email,password,address,message) VALUES (:name,:phone,:email,:password,:address,:message)";
           // Prepare statement
       $stmt = $conn->prepare($query);
       // Bind Param
       $stmt->bindParam(':name', $name);
       $stmt->bindParam(':phone', $phone);
       $stmt->bindParam(':address', $address);
+      $stmt->bindParam(':email', $email);
+      $stmt->bindParam(':password', $password);
       $stmt->bindParam(':message', $message);
  
 

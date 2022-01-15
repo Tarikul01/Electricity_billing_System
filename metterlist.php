@@ -48,7 +48,7 @@ $stmt->execute();
 
 					?>
 				    <td>
-					<a href="deletmeter.api.php?delmetid=<?php echo $result['id'] ?> "onclick="return confirm('Are you sure to Delete');">Delete</a></td>
+					<a href="Api/deletmeter.api.php?delmetid=<?php echo $result['user_id'] ?> "onclick="return confirm('Are you sure to Delete');">Delete</a></td>
 
 					<?php
 					echo "</tr>";

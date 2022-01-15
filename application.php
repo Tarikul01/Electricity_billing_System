@@ -21,6 +21,10 @@ $stmt->execute();
 				
 				<th scope="col">Phone</th>
 				
+				<th scope="col">E-mail</th>
+				
+				<th scope="col">Password</th>
+				
 				<th scope="col">Address</th>
 				<th scope="col">Messages</th>
 				<th>Action</th>
@@ -43,6 +47,8 @@ $stmt->execute();
 						<td><?php echo $id; ?></td>
 						<td><?php echo $result['name'] ?></td>
 						<td><?php echo $result['phone'] ?></td>
+						<td><?php echo $result['email'] ?></td>
+						<td><?php echo $result['password'] ?></td>
 						<td><?php echo $result['address'] ?></td>
 						<td><?php echo $result['message']; ?></td> 
 
@@ -52,6 +58,7 @@ $stmt->execute();
 						?>
 						<td>
 							<a href="Api/upapplication.api.php?readid=<?php echo $result['id']; ?>">Read</a> ||
+							<a href="Api/addapplicant.api.php?appid=<?php echo $result['id']; ?>">Add Consumer</a> ||
 							<a href="Api/delapplication.api.php?deletid=<?php echo $result['id'] ?> "onclick="return confirm('Are you sure to Delete');">Delete</a></td>
 
 

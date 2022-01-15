@@ -1,9 +1,12 @@
-<?php  
-include 'include/header.php';
+
+           	<?php  
+// include 'include/header.php';
 include 'Config/Database.php';
+include 'Formater/Format.php';
+$fm=new Format();
 $db=new Database();
 $conn=$db->connect();
-$sql="SELECT * FROM complain WHERE reaply_status='1'";
+$sql="SELECT * FROM users";
 $stmt=$conn->prepare($sql);
 $stmt->execute();
 
@@ -17,14 +20,9 @@ $stmt->execute();
 			<tr>
 				<th scope="col">#</th>
 
-				<th scope="col">Name</th>
-				
 				<th scope="col">E-mail</th>
-				
-				<th scope="col">Phone</th>
-				<th scope="col">Address</th>
-				<th scope="col">Complain</th>
-				<th>Action</th>
+				<th scope="col">Password</th>
+				<th scope="col">Users Types</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -34,24 +32,22 @@ $stmt->execute();
 				$id=1;
       // Get Result
 				while($result = $stmt->fetch(PDO::FETCH_ASSOC)){
+					// var_dump($result);
 					?>
 
 					<tr>
 	        	<td><?php echo $id; ?></td>
-	        	<td><?php echo $result['name'] ?></td>
 	        	<td><?php echo $result['email'] ?></td>
-				<td><?php echo $result['phone'] ?></td>
-				<td><?php echo $result['address'] ?></td>
-				<td><?php echo $result['complain'] ?></td>
+				<td><?php echo $result['password'] ?></td>
+				<td><?php echo $result['types'] ?></td>
 
 
 				<?php
 				$id++;
-					?>
-                   <td>
-					<a href="reaply.php?reaplyid=<?php echo $result['id']; ?>"; >Reply</a> 
-					</td>
 
+
+					?>
+			
 
 					<?php
 					echo "</tr>";
@@ -63,9 +59,3 @@ $stmt->execute();
 			</tbody>
 		</table>
 	</div>
-
-	<?php 
-
-	// include 'include/footer.php';
-
-?>

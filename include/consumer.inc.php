@@ -10,7 +10,7 @@ $conn=$db->connect();
 $sql="SELECT meters.*,bill_details.*,transactions.* FROM meters INNER JOIN bill_details on meters.id=bill_details.meter_id INNER JOIN transactions on bill_details.id=transactions.bill_id WHERE meters.user_id=:id;";
 $stmt=$conn->prepare($sql);
 $stmt->bindParam(':id',$id);
-$stmt->execute();
+
 // var_dump($result = $stmt->fetch(PDO::FETCH_ASSOC));
 // echo "<h4>Your meter_id is =>".$result = $stmt->fetch()['meter_name']."  "."</h4>";
 echo "<h4>Your Users_name is =>".$_SESSION['user']['name']."  "."</h4>";
@@ -36,12 +36,12 @@ echo "<h4>Your Users_name is =>".$_SESSION['user']['name']."  "."</h4>";
 		</thead>
 		<tbody>
 			<?php
+			// echo $id;
 
-			if($stmt->rowCount()>0) {
+			if($stmt->execute()) {
 				$id=1;
       // Get Result
 				while($result = $stmt->fetch(PDO::FETCH_ASSOC)){
-					// var_dump($result);
 					?>
 
 					<tr>

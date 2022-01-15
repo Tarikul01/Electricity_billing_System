@@ -33,7 +33,7 @@ $stmt->execute();
 
     $stmt->bindParam(':complain',$complain);
     if($stmt->execute()){
-        header("Location:index.php?success=complainedSendSuccessfully");
+        header("Location:complainyour.php?success=complainedSendSuccessfully");
     }else{
         header("Location:index.php?error=occurssomeproblem");
     }
